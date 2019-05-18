@@ -1,4 +1,4 @@
-package com.kyrie.first;
+package com.kyrie.firstHttp;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -19,6 +19,7 @@ public class TestServer {
         EventLoopGroup workerGroup  = new NioEventLoopGroup();
 
         try {
+            //启动服务
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 
             serverBootstrap.group(bossGroup, workerGroup)

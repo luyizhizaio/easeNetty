@@ -1,4 +1,4 @@
-package com.kyrie.first;
+package com.kyrie.firstHttp;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
