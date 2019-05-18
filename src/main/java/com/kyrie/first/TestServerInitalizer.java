@@ -14,7 +14,7 @@ public class TestServerInitalizer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline =ch.pipeline();
 
-        //用于对请求和响应进行编解码
+        //用于对请求和响应进行编解码组件
         pipeline.addLast("httpServerCodec",new HttpServerCodec());
 
         //业务处理

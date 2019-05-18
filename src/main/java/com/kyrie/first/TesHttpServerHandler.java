@@ -53,6 +53,10 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
 
+        System.out.println(msg.getClass().getSimpleName());
+        //获取远程地址
+        System.out.println(ctx.channel().remoteAddress());
+
         if(msg instanceof HttpRequest) { //判断时http请求
 
             HttpRequest httpRequest = (HttpRequest)msg;
@@ -63,14 +67,17 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
                 System.out.println("请求favicon.ico");
                 return;
             }
-
+            //相应内容
             ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                     HttpResponseStatus.OK, content);
+            //设置响应头
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
-
+            //相应客户端
             ctx.writeAndFlush(response);
+            //关闭连接
+            ctx.channel().close();
         }
 
 
