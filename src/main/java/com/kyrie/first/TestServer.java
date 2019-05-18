@@ -7,7 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 实现http服务
+ * 实现http服务主类
  * Created by Kyrie on 2019/5/18.
  */
 public class TestServer {
