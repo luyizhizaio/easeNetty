@@ -7,14 +7,14 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * ÊµÏÖhttp·şÎñ
+ * å®ç°httpæœåŠ¡
  * Created by Kyrie on 2019/5/18.
  */
 public class TestServer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //ÊÂ¼şÑ­»·×é£¬boss½ÓÊÜÁ¬½Ó½»¸øworker£¬worker¾ßÌå´¦ÀíÁ¬½Ó¡£
+        //äº‹ä»¶å¾ªç¯ç»„ï¼Œbossæ¥å—è¿æ¥äº¤ç»™workerï¼Œworkerå…·ä½“å¤„ç†è¿æ¥ã€‚
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup  = new NioEventLoopGroup();
 
@@ -25,7 +25,7 @@ public class TestServer {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new TestServerInitalizer()); //
 
-            //°ó¶¨¶Ë¿Ú
+            //ç»‘å®šç«¯å£
             ChannelFuture future = serverBootstrap.bind(8899).sync();
 
             future.channel().closeFuture().sync();

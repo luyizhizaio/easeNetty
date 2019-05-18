@@ -7,13 +7,45 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
+import java.net.URI;
+
 /**
- * ÒµÎñ´¦ÀíÆ÷
+ * ä¸šåŠ¡å¤„ç†å™¨
  * Created by Kyrie on 2019/5/18.
  */
 public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel Registered");
+        super.channelRegistered(ctx);
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel Unregistered");
+        super.channelUnregistered(ctx);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel Active");
+        super.channelActive(ctx);
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel InActive");
+        super.channelInactive(ctx);
+    }
+
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel Added");
+        super.handlerAdded(ctx);
+    }
+
     /**
-     * ¶ÁÈ¡¿Í»§¶Ë·¢ËÍµÄÇëÇó£¬²¢ÇÒÏìÓ¦
+     * è¯»å–å®¢æˆ·ç«¯å‘é€çš„è¯·æ±‚ï¼Œå¹¶ä¸”å“åº”
      * @param ctx
      * @param msg
      * @throws Exception
@@ -21,7 +53,16 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
 
-        if(msg instanceof HttpRequest) {
+        if(msg instanceof HttpRequest) { //åˆ¤æ–­æ—¶httpè¯·æ±‚
+
+            HttpRequest httpRequest = (HttpRequest)msg;
+
+            System.out.println("è¯·æ±‚æ–¹æ³•å" + httpRequest.method().name());
+            URI uri= new URI(httpRequest.uri());
+            if("/favicon.ico".equals(uri.getPath())){ //è¯·æ±‚å›¾è¡¨
+                System.out.println("è¯·æ±‚favicon.ico");
+                return;
+            }
 
             ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
@@ -31,5 +72,9 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
 
             ctx.writeAndFlush(response);
         }
+
+
+
+
     }
 }

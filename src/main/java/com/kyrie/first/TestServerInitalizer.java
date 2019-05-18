@@ -14,10 +14,10 @@ public class TestServerInitalizer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline =ch.pipeline();
 
-        //ÓÃÓÚ¶ÔÇëÇóºÍÏìÓ¦½øĞĞ±à½âÂë
+        //ç”¨äºå¯¹è¯·æ±‚å’Œå“åº”è¿›è¡Œç¼–è§£ç 
         pipeline.addLast("httpServerCodec",new HttpServerCodec());
 
-        //ÒµÎñ´¦Àí
+        //ä¸šåŠ¡å¤„ç†
         pipeline.addLast("tesHttpServerHandler",new TesHttpServerHandler());
 
 
