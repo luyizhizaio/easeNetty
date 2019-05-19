@@ -32,16 +32,33 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
         super.channelActive(ctx);
     }
 
+    /**
+     * 连接不活跃 回调
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channel InActive");
         super.channelInactive(ctx);
     }
 
+    /**
+     * 连接建立
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channel Added");
         super.handlerAdded(ctx);
+    }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+
+        System.out.println("channel Removed");
+        super.handlerRemoved(ctx);
     }
 
     /**
