@@ -18,6 +18,7 @@ public class TestPB {
 
         //对象转成字节数组
         byte[] bytes = person.toByteArray();
+        //从字节数组解析对象
         Person person2 = Person.parseFrom(bytes);
 
         System.out.println(person2);
