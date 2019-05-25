@@ -6,8 +6,38 @@ option optimize_for=SPEED;
 option java_package="com.kyrie.protoBuf.netty";
 option java_outer_classname="MyDataInfo";
 
+
+message MyMessage{
+    enum DataType{
+        PersonType =1;
+        AddressType = 2;
+        OrderType =3;
+    }
+
+    required DataType data_type =1;
+    //oneof 多个字段最多只会给一个字段设置值；并且会清空其他字段
+    oneof dataBody{
+        Person person = 2;
+        Address add = 3;
+        Order order =4;
+    }
+
+
+}
+
 message Person{
     required string name=1;
     optional int32 age = 2;
     optional string address = 3;
+}
+
+message Address{
+    optional string address_name=1;
+
+}
+
+
+message Order{
+    optional string address_name=1;
+
 }
