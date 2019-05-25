@@ -21,8 +21,6 @@ message MyMessage{
         Address add = 3;
         Order order =4;
     }
-
-
 }
 
 message Person{
@@ -36,8 +34,6 @@ message Address{
 
 }
 
-
 message Order{
     optional string address_name=1;
-
 }
