@@ -3,6 +3,7 @@ package com.kyrie.nio;
 import java.nio.ByteBuffer;
 
 /**
+ * slice方法的使用
  * Created by Kyrie on 2019/6/23.
  */
 public class NioTest6 {
