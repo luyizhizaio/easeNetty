@@ -66,15 +66,33 @@ public class NioServer {
 
                             if(count > 0 ){
                                 readBuffer.flip();
+                                //接受到客户端消息
                                 Charset charset = Charset.forName("utf-8");
                                 String receivedMessage = String.valueOf(charset.decode(readBuffer).array());
 
                                 System.out.println(client +":" + receivedMessage);
 
+                                //找到发送者的key
+                                String senderKey = null;
+                                for(Map.Entry<String,SocketChannel> entry : clientMap.entrySet()){
+                                    if(client == entry.getValue()){
+                                        senderKey = entry.getKey();
+                                        break;
+                                    }
+                                }
+                                //
+                                for(Map.Entry<String,SocketChannel> entry:clientMap.entrySet()){
+                                    //把收到的数据向所有channel
+                                    SocketChannel value = entry.getValue();
+                                    ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+
+                                    writeBuffer.put((senderKey+":" +receivedMessage).getBytes());
+                                    writeBuffer.flip();
+                                    value.write(writeBuffer);
+
+                                }
                             }
-
                         }
-
                     }catch(Exception e){
                         e.printStackTrace();
 
