@@ -21,14 +21,14 @@ public class MySocketClientHandler extends SimpleChannelInboundHandler<String> {
     }
 
     /**
-     * Í¨µÀÁ¬½ÓºóµÄ»Øµ÷
+     * é€šé“è¿æ¥åçš„å›è°ƒ
      * @param ctx
      * @throws Exception
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 
-        //Ïò·şÎñ¶Ë·¢ËÍÏûÏ¢
+        //å‘æœåŠ¡ç«¯å‘é€æ¶ˆæ¯
         ctx.writeAndFlush("send to server!!!");
 
 

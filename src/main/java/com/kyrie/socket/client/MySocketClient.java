@@ -7,7 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
- * ¿Í»§¶Ë
+ * å®¢æˆ·ç«¯
  * Created by Kyrie on 2019/5/18.
  */
 public class MySocketClient {

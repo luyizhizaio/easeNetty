@@ -6,14 +6,14 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.UUID;
 
 /**
- * ·ºĞÍ£º±íÊ¾·şÎñ¶ËºÍ¿Í»§¶Ë´«ÊäµÄÊı¾İÀàĞÍ
+ * æ³›å‹ï¼šè¡¨ç¤ºæœåŠ¡ç«¯å’Œå®¢æˆ·ç«¯ä¼ è¾“çš„æ•°æ®ç±»å‹
  * Created by Kyrie on 2019/5/18.
  */
 public class MySocketServerHandler extends SimpleChannelInboundHandler<String> {
     /**
      *
-     * @param ctx£º
-     * @param msg £ºÊÕµ½µÄÏûÏ¢
+     * @param ctxï¼š
+     * @param msg ï¼šæ”¶åˆ°çš„æ¶ˆæ¯
      * @throws Exception
      */
     @Override
@@ -23,13 +23,13 @@ public class MySocketServerHandler extends SimpleChannelInboundHandler<String> {
         System.out.println(ctx.channel().remoteAddress()+ ","+ msg);
 
 
-        //ÏìÓ¦¸ø¿Í»§¶ËµÄÊı¾İ
+        //å“åº”ç»™å®¢æˆ·ç«¯çš„æ•°æ®
         ctx.channel().writeAndFlush("from server:"+ UUID.randomUUID());
 
     }
 
     /**
-     * Òì³£´¦Àí·½·¨
+     * å¼‚å¸¸å¤„ç†æ–¹æ³•
      * @param ctx
      * @param cause
      * @throws Exception
@@ -38,7 +38,7 @@ public class MySocketServerHandler extends SimpleChannelInboundHandler<String> {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 
         cause.printStackTrace();
-        ctx.close(); //³öÏÖÒì³££¬¹Ø±ÕÁ¬½Ó¡£
+        ctx.close(); //å‡ºç°å¼‚å¸¸ï¼Œå…³é—­è¿æ¥ã€‚
 
     }
 }
