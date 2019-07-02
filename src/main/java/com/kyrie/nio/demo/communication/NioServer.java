@@ -33,7 +33,7 @@ public class NioServer {
         //将channel注册到selector对象上。可以注册多个channel
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-        //处理事件
+        //轮询处理事件
         while(true){
             try{
                 selector.select(); //该方法阻塞
