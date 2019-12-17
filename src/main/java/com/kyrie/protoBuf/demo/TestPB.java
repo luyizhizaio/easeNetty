@@ -16,9 +16,9 @@ public class TestPB {
 
         System.out.println(person.toString());
 
-        //¶ÔÏó×ª³É×Ö½ÚÊı×é
+        //å¯¹è±¡è½¬æˆå­—èŠ‚æ•°ç»„
         byte[] bytes = person.toByteArray();
-        //´Ó×Ö½ÚÊı×é½âÎö¶ÔÏó
+        //ä»å­—èŠ‚æ•°ç»„è§£æå¯¹è±¡
         Person person2 = Person.parseFrom(bytes);
 
         System.out.println(person2);
