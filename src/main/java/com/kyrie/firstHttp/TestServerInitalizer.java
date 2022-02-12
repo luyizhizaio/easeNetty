@@ -12,14 +12,11 @@ import io.netty.handler.codec.http.HttpServerCodec;
 public class TestServerInitalizer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-        ChannelPipeline pipeline =ch.pipeline();
+        ChannelPipeline pipeline =ch.pipeline(); //处理器管道
 
         //用于对请求和响应进行编解码组件
         pipeline.addLast("httpServerCodec",new HttpServerCodec());
-
         //业务处理
         pipeline.addLast("tesHttpServerHandler",new TesHttpServerHandler());
-
-
     }
 }

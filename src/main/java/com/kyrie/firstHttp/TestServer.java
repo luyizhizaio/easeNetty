@@ -24,7 +24,7 @@ public class TestServer {
 
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new TestServerInitalizer()); //
+                    .childHandler(new TestServerInitalizer()); //子处理器，业务实现处理
 
             //绑定端口
             ChannelFuture future = serverBootstrap.bind(8899).sync();
@@ -35,7 +35,5 @@ public class TestServer {
             workerGroup.shutdownGracefully();
 
         }
-
-
     }
 }

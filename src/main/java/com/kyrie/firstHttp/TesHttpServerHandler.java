@@ -72,7 +72,7 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
 
         System.out.println(msg.getClass().getSimpleName());
         //获取远程地址
-        System.out.println(ctx.channel().remoteAddress());
+//        System.out.println(ctx.channel().remoteAddress());
 
         if(msg instanceof HttpRequest) { //判断时http请求
 
@@ -80,25 +80,22 @@ public class TesHttpServerHandler extends SimpleChannelInboundHandler<HttpObject
 
             System.out.println("请求方法名" + httpRequest.method().name());
             URI uri= new URI(httpRequest.uri());
-            if("/favicon.ico".equals(uri.getPath())){ //请求图表
+            if("/favicon.ico".equals(uri.getPath())){ //请求图标，浏览器会自己发送一次图标的请求
                 System.out.println("请求favicon.ico");
                 return;
             }
-            //相应内容
+            //响应内容
             ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
+            //制定响应协议版本
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                     HttpResponseStatus.OK, content);
             //设置响应头
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
-            //相应客户端
+            //响应返回给客户端
             ctx.writeAndFlush(response);
             //关闭连接
             ctx.channel().close();
         }
-
-
-
-
     }
 }
