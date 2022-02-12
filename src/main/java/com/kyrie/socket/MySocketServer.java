@@ -16,33 +16,19 @@ public class MySocketServer {
         //事件循环组，boss接受连接交给worker，worker具体处理连接。
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup  = new NioEventLoopGroup();
-
-
         try{
-
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new MySocketServerInItializer());
 
-
             //sync 表示等待
-            ChannelFuture  channelFuture = serverBootstrap.bind("localhost", 8899).sync();
+            ChannelFuture  channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
 
         }finally {
-
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
-
         }
-
-
-
-
-
-
-
-
     }
 }

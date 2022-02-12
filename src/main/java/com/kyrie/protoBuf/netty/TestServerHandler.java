@@ -10,7 +10,7 @@ public class TestServerHandler extends SimpleChannelInboundHandler<MyDataInfo.My
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MyDataInfo.MyMessage msg) throws Exception {
 
-        //接受客户端的Person
+        //鎺ュ彈瀹㈡埛绔殑Person
 
         MyDataInfo.MyMessage.DataType type = msg.getDataType();
 

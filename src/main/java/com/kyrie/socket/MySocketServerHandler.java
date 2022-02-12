@@ -12,20 +12,17 @@ import java.util.UUID;
 public class MySocketServerHandler extends SimpleChannelInboundHandler<String> {
     /**
      *
-     * @param ctx：
+     * @param ctx：上下文
      * @param msg ：收到的消息
      * @throws Exception
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-
-
+        //远程地址和内容
         System.out.println(ctx.channel().remoteAddress()+ ","+ msg);
-
 
         //响应给客户端的数据
         ctx.channel().writeAndFlush("from server:"+ UUID.randomUUID());
-
     }
 
     /**
@@ -36,9 +33,7 @@ public class MySocketServerHandler extends SimpleChannelInboundHandler<String> {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-
         cause.printStackTrace();
         ctx.close(); //出现异常，关闭连接。
-
     }
 }

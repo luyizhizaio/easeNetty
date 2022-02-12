@@ -29,10 +29,10 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyDataInfo.My
 
         if(0== randomInt){
 
-            //·¢ËÍÊý¾Ýµ½·þÎñ¶Ë
+            //å‘é€æ•°æ®åˆ°æœåŠ¡ç«¯
             MyDataInfo.Person person = MyDataInfo.Person.newBuilder()
-                    .setAddress("ºÏ·Ê")
-                    .setAge(22).setName("ºàÀû").build();
+                    .setAddress("åˆè‚¥")
+                    .setAge(22).setName("äº¨åˆ©").build();
 
 
             myMessage = MyDataInfo.MyMessage.newBuilder()

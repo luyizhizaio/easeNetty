@@ -5,7 +5,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 
 /**
- * ÅĞ¶Ï¿ÕÏĞ×´Ì¬£¬´òÓ¡ÈÕÖ¾
+ * åˆ¤æ–­ç©ºé—²çŠ¶æ€ï¼Œæ‰“å°æ—¥å¿—
  * Created by Kyrie on 2019/5/19.
  */
 public class MyHeatbeatServerHandler extends ChannelInboundHandlerAdapter {
@@ -19,15 +19,15 @@ public class MyHeatbeatServerHandler extends ChannelInboundHandlerAdapter {
 
             switch(event.state()){
                 case READER_IDLE:
-                    eventType="¶Á¿ÕÏĞ";
+                    eventType="è¯»ç©ºé—²";
                 case WRITER_IDLE:
-                    eventType="Ğ´¿ÕÏĞ";
+                    eventType="å†™ç©ºé—²";
                 case ALL_IDLE:
-                    eventType="¶ÁĞ´¿ÕÏĞ";
+                    eventType="è¯»å†™ç©ºé—²";
                     break;
             }
 
-            System.out.println(ctx.channel().remoteAddress() + "³¬Ê±ÊÂ¼ş£º" + eventType);
+            System.out.println(ctx.channel().remoteAddress() + "è¶…æ—¶äº‹ä»¶ï¼š" + eventType);
             ctx.channel().close();
 
 

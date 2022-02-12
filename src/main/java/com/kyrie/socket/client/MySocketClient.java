@@ -13,21 +13,19 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class MySocketClient {
 
     public static void main(String[] args) throws InterruptedException {
-        EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+      //客户端只需要一个事件循环组
+      EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
-        try {
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class)
+      try {
+        //客户端启动类
+        Bootstrap bootstrap = new Bootstrap();
+        bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class)
                     .handler(new MySocketClientInitlizer());
-            ChannelFuture channelFuture = bootstrap.connect("localhost", 8899).sync();
+        ChannelFuture channelFuture = bootstrap.connect("localhost", 8899).sync();
 
-            channelFuture.channel().closeFuture().sync();
-        }finally{
-            eventLoopGroup.shutdownGracefully();
-
-        }
-
-
+        channelFuture.channel().closeFuture().sync();
+      }finally{
+        eventLoopGroup.shutdownGracefully();
+      }
     }
-
 }

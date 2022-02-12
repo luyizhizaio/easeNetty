@@ -1,6 +1,5 @@
 package com.kyrie.socket.client;
 
-import com.kyrie.socket.MySocketServerHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -24,7 +23,5 @@ public class MySocketClientInitlizer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
 
         pipeline.addLast(new MySocketClientHandler());
-
-
     }
 }

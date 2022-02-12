@@ -17,7 +17,7 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel>{
         ChannelPipeline pipeline = ch.pipeline();
 
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
-        //½âÂëÆ÷
+        //è§£ç å™¨
         pipeline.addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());

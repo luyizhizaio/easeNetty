@@ -13,7 +13,7 @@ public class MyHeatbeatServerInitializer  extends ChannelInitializer<SocketChann
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
-        //¿ÕÏÐ×´Ì¬¼ì²âµÄ´¦ÀíÆ÷£¨¶Á¿ÕÏÐÊ±¼ä£¬Ð´¿ÕÏÐÊ±¼ä£¬¶ÁÐ´¿ÕÏÐÊ±¼ä£©
+        //ç©ºé—²çŠ¶æ€æ£€æµ‹çš„å¤„ç†å™¨ï¼ˆè¯»ç©ºé—²æ—¶é—´ï¼Œå†™ç©ºé—²æ—¶é—´ï¼Œè¯»å†™ç©ºé—²æ—¶é—´ï¼‰
         pipeline.addLast(new IdleStateHandler(5,10,20));
         pipeline.addLast(new MyHeatbeatServerHandler());
     }

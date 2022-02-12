@@ -15,7 +15,7 @@ import io.netty.handler.logging.LoggingHandler;
 public class MyHeatbeatServer {
 
     public static void main(String[] args) throws InterruptedException {
-        //ÊÂ¼şÑ­»·×é£¬boss½ÓÊÜÁ¬½Ó½»¸øworker£¬worker¾ßÌå´¦ÀíÁ¬½Ó¡£
+        //äº‹ä»¶å¾ªç¯ç»„ï¼Œbossæ¥å—è¿æ¥äº¤ç»™workerï¼Œworkerå…·ä½“å¤„ç†è¿æ¥ã€‚
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -25,11 +25,11 @@ public class MyHeatbeatServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO)) //ÓÃÓÚbossgroupµÄ´¦ÀíÆ÷
-                    .childHandler(new MyHeatbeatServerInitializer()); //ÓÃÓÚworkerGroupµÄ´¦ÀíÆ÷
+                    .handler(new LoggingHandler(LogLevel.INFO)) //ç”¨äºbossgroupçš„å¤„ç†å™¨
+                    .childHandler(new MyHeatbeatServerInitializer()); //ç”¨äºworkerGroupçš„å¤„ç†å™¨
 
 
-            //sync ±íÊ¾µÈ´ı
+            //sync è¡¨ç¤ºç­‰å¾…
             ChannelFuture channelFuture = serverBootstrap.bind("localhost", 8899).sync();
             channelFuture.channel().closeFuture().sync();
 
