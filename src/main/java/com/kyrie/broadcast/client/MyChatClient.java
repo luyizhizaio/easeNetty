@@ -27,8 +27,6 @@ public class MyChatClient {
 
             Channel channel = bootstrap.connect("localhost", 8899).channel();
 
-            //channelFuture.channel().closeFuture().sync();
-
             //从控制台读取输入数据
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

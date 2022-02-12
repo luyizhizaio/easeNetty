@@ -13,7 +13,7 @@ public class MyHeatbeatServerInitializer  extends ChannelInitializer<SocketChann
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
-        //空闲状态检测的处理器（读空闲时间，写空闲时间，读写空闲时间）
+        //空闲状态检测的处理器 指定（读空闲时间，写空闲时间，读写空闲时间）
         pipeline.addLast(new IdleStateHandler(5,10,20));
         pipeline.addLast(new MyHeatbeatServerHandler());
     }
