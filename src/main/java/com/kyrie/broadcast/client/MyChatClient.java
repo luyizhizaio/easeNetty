@@ -34,15 +34,15 @@ public class MyChatClient {
 
             //死循环,向服务端发送消息，
             for(;;){
-                channel.writeAndFlush(br.readLine() + "\r\n");
+              String msg = br.readLine();
+              if(msg.equals("bye")){
+                break;
+              }else{
+                channel.writeAndFlush(msg + "\r\n");
+              }
             }
-
-
         }finally{
             eventLoopGroup.shutdownGracefully();
-
         }
-
-
     }
 }

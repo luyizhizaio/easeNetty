@@ -14,7 +14,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 public class MyChatHandler extends SimpleChannelInboundHandler<String> {
 
 
-    //用于保存channel对象
+    //创建channel组对象， 用于保存channel对象
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 
@@ -53,11 +53,8 @@ public class MyChatHandler extends SimpleChannelInboundHandler<String> {
         //对该组中所有channel发送消息
         channelGroup.writeAndFlush(channel.remoteAddress() +"加入\n");
 
-
         //客户端连接保存到channelGroup中
         channelGroup.add(channel);
-
-
     }
 
     /**
@@ -73,7 +70,6 @@ public class MyChatHandler extends SimpleChannelInboundHandler<String> {
         System.out.println("[服务器]-" + channel.remoteAddress() +"离开\n");
 
         System.out.println("group size:"+channelGroup.size());
-
     }
 
     /**
