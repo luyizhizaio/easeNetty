@@ -32,7 +32,7 @@ public class MyChatClient {
             //从控制台读取输入数据
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-            //死循环
+            //死循环,向服务端发送消息，
             for(;;){
                 channel.writeAndFlush(br.readLine() + "\r\n");
             }

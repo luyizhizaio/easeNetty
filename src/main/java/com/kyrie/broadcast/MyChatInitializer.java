@@ -17,14 +17,13 @@ public class MyChatInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
-        //分隔符handler
+        //分隔符handler，对分隔符进行解析
         pipeline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
-
+        //字符串编解码器
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
 
         //业务处理器
         pipeline.addLast(new MyChatHandler());
-
     }
 }

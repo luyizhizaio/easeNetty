@@ -28,8 +28,7 @@ public class MyChatHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
 
         Channel channel = ctx.channel();
-
-
+        //向所有channel发送消息
         channelGroup.forEach(ch ->{
 
             if(channel !=ch){
@@ -37,12 +36,7 @@ public class MyChatHandler extends SimpleChannelInboundHandler<String> {
             }else{
                 ch.writeAndFlush("[自己]"+msg+"\n");
             }
-
         });
-
-
-
-
     }
 
 
