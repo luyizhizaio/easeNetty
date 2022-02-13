@@ -29,12 +29,8 @@ public class TestClient {
             ChannelFuture channelFuture = bootstrap.connect("localhost", 8899);
             channelFuture.channel().closeFuture().sync();
 
-
         }finally{
             eventLoopGroup.shutdownGracefully();
-
         }
-
-
     }
 }

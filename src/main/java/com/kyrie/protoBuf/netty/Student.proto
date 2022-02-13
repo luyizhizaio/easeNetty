@@ -2,7 +2,7 @@ syntax="proto2";
 
 package com.kyrie.protoBuf.netty;
 
-option optimize_for=SPEED;
+option optimize_for=SPEED; //åŠ å¿«è§£æé€Ÿåº¦
 option java_package="com.kyrie.protoBuf.netty";
 option java_outer_classname="MyDataInfo";
 
@@ -15,7 +15,7 @@ message MyMessage{
     }
 
     required DataType data_type =1;
-    //oneof ¶à¸ö×Ö¶Î×î¶àÖ»»á¸øÒ»¸ö×Ö¶ÎÉèÖÃÖµ£»²¢ÇÒ»áÇå¿ÕÆäËû×Ö¶Î
+    //oneof å¤šä¸ªå­—æ®µæœ€å¤šåªä¼šç»™ä¸€ä¸ªå­—æ®µè®¾ç½®å€¼ï¼›å¹¶ä¸”ä¼šæ¸…ç©ºå…¶ä»–å­—æ®µ
     oneof dataBody{
         Person person = 2;
         Address add = 3;

@@ -27,29 +27,22 @@
         socket.onclose= function(event){
             var ta = document.getElementById("responseText");
             ta.value =ta.value +"\n"+ "连接关闭！";
-
-
         }
 
     }else {
         alert("浏览器不支持websocket！");
     }
-
-
     //客户端向服务端发送数据
     function send(message){
         if(!window.WebSocket){
             return;
         }
-
         if(socket.readyState == WebSocket.OPEN){
             socket.send(message);
         }else{
             alert("连接尚未开启");
         }
-
     }
-
 
 </script>
 
@@ -63,11 +56,6 @@
     <textarea id="responseText" style="width: 400px; height:200px"></textarea>
 
     <input type="button" value="清空内容" onclick="javascript: document.getElementById('responseText').value= ''" />
-
-
 </form>
-
-
-
 </body>
 </html>

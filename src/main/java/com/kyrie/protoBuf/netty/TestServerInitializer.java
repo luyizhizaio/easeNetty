@@ -15,9 +15,9 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel>{
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-
+        //4个关于protobuf的处理器
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
-        //解码器
+        //解码器：传入protobuf的实例
         pipeline.addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());

@@ -10,11 +10,14 @@ import java.util.Random;
  * Created by Kyrie on 2019/5/25.
  */
 public class TestClientHandler extends SimpleChannelInboundHandler<MyDataInfo.MyMessage> {
+  /**
+   * 接收服务端发过来的消息
+   * @param ctx
+   * @param msg
+   * @throws Exception
+   */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MyDataInfo.MyMessage msg) throws Exception {
-
-
-
 
     }
 
@@ -59,8 +62,6 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyDataInfo.My
                     .setDataType(MyDataInfo.MyMessage.DataType.OrderType).build();
 
         }
-
-
 
         ctx.writeAndFlush(myMessage);
 
