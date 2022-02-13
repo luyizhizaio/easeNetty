@@ -20,14 +20,12 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
         //块的方式写的处理器
         pipeline.addLast(new ChunkedWriteHandler());
 
-        //把数据段聚合到一起，传给下一个Handler。
+        //把数据段聚合到一起,聚合成完成的请求，传给下一个Handler。
         pipeline.addLast(new HttpObjectAggregator(8192));
 
-        //websocket的处理器，参数：ws://server:port/context_path 的context_path
+        //用于websocket的处理器，参数：ws://server:port/context_path 的context_path
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
 
         pipeline.addLast(new TextWebSocketFrameHandler());
-
-
     }
 }

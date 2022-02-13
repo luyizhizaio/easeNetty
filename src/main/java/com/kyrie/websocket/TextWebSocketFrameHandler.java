@@ -16,14 +16,13 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
         System.out.println("收到消息：" + msg.text());
 
-        //给channel发送消息
+        //给客户端channel发送websocket的消息
         ctx.channel().writeAndFlush(new TextWebSocketFrame("服务器时间：" + LocalDateTime.now()));
     }
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handler add" + ctx.channel().id().asLongText());
-
     }
 
     @Override
