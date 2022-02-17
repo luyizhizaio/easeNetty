@@ -2,6 +2,7 @@ package com.kyrie.decorator;
 
 /**
  * Created by Kyrie on 2019/5/25.
+ * 具体的装饰角色
  */
 public class ConcreteDecorator1 extends Decorator {
 
