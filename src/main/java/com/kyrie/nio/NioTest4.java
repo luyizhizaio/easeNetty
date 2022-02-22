@@ -23,8 +23,8 @@ public class NioTest4 {
         ByteBuffer buffer = ByteBuffer.allocate(512);
 
         while(true){
-            buffer.clear();
-            //写入buffer
+            //buffer.clear();
+            //写入buffer；Reads a sequence of bytes from this channel into the given buffer.
             int read = inputChannel.read(buffer);
             System.out.println("read:"+read);
 

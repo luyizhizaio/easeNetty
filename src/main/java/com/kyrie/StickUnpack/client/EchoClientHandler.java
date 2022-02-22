@@ -20,7 +20,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+      System.out.println("channelActive。。。。");
         String msg = echo_msg +"$_";
         ctx.writeAndFlush(msg);
     }

@@ -2,6 +2,7 @@ package com.kyrie.socket;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -19,11 +20,14 @@ public class MySocketServer {
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup,workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new MySocketServerInItializer());
+              .channel(NioServerSocketChannel.class)//使用 NioServerSocketChannel作为通道实现
+              .option(ChannelOption.SO_BACKLOG,128)//设置线程队列得到的连接个数
+              .childOption(ChannelOption.SO_KEEPALIVE,true)//设置保持活动连接状态
+              .childHandler(new MySocketServerInItializer());
 
-            //sync 表示等待
+            //绑定端口，并且同步
             ChannelFuture  channelFuture = serverBootstrap.bind(8899).sync();
+            //对关闭通道进行监听
             channelFuture.channel().closeFuture().sync();
 
         }finally {

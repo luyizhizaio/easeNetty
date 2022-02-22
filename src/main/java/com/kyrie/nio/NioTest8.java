@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /**
- * direct内存
+ * 直接缓存区
  * Created by Kyrie on 2019/6/23.
  */
 public class NioTest8 {
@@ -21,6 +21,7 @@ public class NioTest8 {
 
         FileChannel outputChannel = outputStream.getChannel();
 
+        //分配直接缓存区
         ByteBuffer buffer = ByteBuffer.allocateDirect(512);
 
         while(true){

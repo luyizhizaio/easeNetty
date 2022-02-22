@@ -13,6 +13,11 @@ import io.netty.util.CharsetUtil;
  * Created by Kyrie on 2019/5/18.
  */
 public class MySocketServerInItializer extends ChannelInitializer<SocketChannel> {
+  /**
+   *
+   * @param ch
+   * @throws Exception
+   */
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
 

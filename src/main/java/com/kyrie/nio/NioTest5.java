@@ -17,6 +17,7 @@ public class NioTest5 {
         buffer.putDouble(1.23d);
         buffer.putChar('应');
         buffer.putShort((short)2);
+        buffer.putInt(88);
 
         buffer.flip();
 
@@ -25,6 +26,7 @@ public class NioTest5 {
         System.out.println(buffer.getDouble());
         System.out.println(buffer.getChar());
         System.out.println(buffer.getShort());
+        System.out.println(buffer.getInt());
 
     }
 
